@@ -114,6 +114,10 @@ The team has worked on modeling the following key components of the YouTube soci
 - Video Upload Activity
 - And more...
 
+## Screenshots
+![Screenshot 2024-04-13 192459](https://github.com/NaveenVarmaK/Youtube_Ontology/assets/64104378/b08c3bff-d820-4883-819c-058fa4abaa0b)![Screenshot 2024-04-13 192528](https://github.com/NaveenVarmaK/Youtube_Ontology/assets/64104378/6523c814-f75f-4d06-917d-37c99a64dea0)
+
+
 ## Examples
 
 An examples of how entities, relationships, and properties are used in our youtube ontology. [Youtube_Ontology.ttl](https://github.com/NaveenVarmaK/Youtube_Ontology/blob/main/Youtube_Ontology.ttl)
