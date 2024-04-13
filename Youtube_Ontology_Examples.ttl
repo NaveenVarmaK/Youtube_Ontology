@@ -1,0 +1,403 @@
+@prefix : <http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/> .
+
+<http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology> rdf:type owl:Ontology ;
+                                                                       rdfs:comment "This is an Ontology about Youtube Social Network"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/categorized_under
+:categorized_under rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Video ;
+                   rdfs:range :Category ;
+                   rdfs:comment """Specifies the category classification of a video on the platform.
+Example: Video X is categorized under the Music category."""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/comments_on
+:comments_on rdf:type owl:ObjectProperty ;
+             rdfs:domain :Registered_User ;
+             rdfs:range :Video ;
+             rdfs:comment """Represents a user leaving a comment on a video.
+Example: User C comments on Video X."""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/community
+:community rdf:type owl:ObjectProperty ;
+           rdfs:domain :Registered_User ;
+           rdfs:range :Channel ,
+                      :Comment ;
+           rdfs:comment """Represents the collective group of users interacting on YouTube, including channels, comments, etc.
+Example: User G interacts with the YouTube community by subscribing to channels and leaving comments."""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/creates
+:creates rdf:type owl:ObjectProperty ;
+         rdfs:domain :Registered_User ;
+         rdfs:range :Channel ;
+         rdfs:comment "User B creates Channel Y."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/includes
+:includes rdf:type owl:ObjectProperty ;
+          rdfs:domain :Channel ;
+          rdfs:range :Video ;
+          rdfs:comment "Channel Y includes Video Z"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/likes
+:likes rdf:type owl:ObjectProperty ;
+       rdfs:domain :Registered_User ;
+       rdfs:range :Video ;
+       rdfs:comment """Represents a user expressing their opinion by liking or disliking a video or comment.
+Example: User E likes Video X."""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/shares
+:shares rdf:type owl:ObjectProperty ;
+        rdfs:domain :Registered_User ;
+        rdfs:range :Video ;
+        rdfs:comment """Indicates that a user has shared a video on social media or other platforms.
+Example: User F shares Video X."""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/subscribes
+:subscribes rdf:type owl:ObjectProperty ;
+            rdfs:domain :Registered_User ;
+            rdfs:range :Channel ;
+            rdfs:comment """Indicates that a user has subscribed to a channel to receive updates on its content.
+Example: User D subscribes to Channel Y"""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/uploads
+:uploads rdf:type owl:ObjectProperty ;
+         rdfs:domain :Registered_User ;
+         rdfs:range :MusicVideo ,
+                    :Vlog ;
+         rdfs:comment "Defines the relationship between a user and a video, indicating that the user has uploaded the video to the platform."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/channelID
+:channelID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Channel ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Channel X has channelID \"987654321"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/dislikeCount
+:dislikeCount rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Video ;
+              rdfs:range xsd:long ;
+              rdfs:comment "Video W has a dislikeCount of 100"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/duration
+:duration rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Video ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Video U has a duration of \"00:10:30\" (10 minutes and 30 seconds)"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/likeCount
+:likeCount rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Video ;
+           rdfs:range xsd:long ;
+           rdfs:comment "Video Z has a likeCount of 500"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/playlistID
+:playlistID rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Playlist ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Playlist P has playlistID \"456\""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/subscriberCount
+:subscriberCount rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Channel ;
+                 rdfs:range xsd:long ;
+                 rdfs:comment "Channel V has a subscriberCount of 5000."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/timestamp
+:timestamp rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Video ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment """Video X was uploaded at timestamp \"2024-04-15T15:00:00\".
+<timestamp>2024-04-12T10:30:00</timestamp>"""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/userID
+:userID rdf:type owl:DatatypeProperty ;
+        rdfs:domain :User ;
+        rdfs:range xsd:string ;
+        rdfs:comment "User A has userID \"123456789\""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/videoID
+:videoID rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Video ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Video Y has videoID \"567890123\""@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/viewCount
+:viewCount rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Video ;
+           rdfs:range xsd:long ;
+           rdfs:comment "Video Y has a viewCount of 1000"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Activity
+:Activity rdf:type owl:Class ;
+          rdfs:comment "Represents various activities or actions performed by users on the YouTube platform."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Category
+:Category rdf:type owl:Class ;
+          rdfs:comment "Represents a category or genre classification for videos on YouTube."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Channel
+:Channel rdf:type owl:Class ;
+         rdfs:comment "Represents a channel on YouTube, which is a collection of videos created by a user."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Comment
+:Comment rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/CommentOn
+:CommentOn rdf:type owl:Class ;
+           rdfs:subClassOf :Activity ;
+           rdfs:comment "Represents the action of leaving a comment on a video."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Dislike
+:Dislike rdf:type owl:Class ;
+         rdfs:subClassOf :Activity ;
+         rdfs:comment "Represents the action of disliking a video or comment."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Education
+:Education rdf:type owl:Class ;
+           rdfs:subClassOf :Category ;
+           rdfs:comment "Represents videos related to educational content." .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Entertainment
+:Entertainment rdf:type owl:Class ;
+               rdfs:subClassOf :Category ;
+               rdfs:comment "Represents videos related to entertainment content."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Gaming
+:Gaming rdf:type owl:Class ;
+        rdfs:subClassOf :Entertainment ;
+        rdfs:comment "Represents videos related to gaming content."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Guest_User
+:Guest_User rdf:type owl:Class ;
+            rdfs:subClassOf :User .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Like
+:Like rdf:type owl:Class ;
+      rdfs:subClassOf :Activity ;
+      rdfs:comment "Represents the action of liking a video or comment."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Music
+:Music rdf:type owl:Class ;
+       rdfs:subClassOf :Entertainment ;
+       rdfs:comment "Represents videos related to music content."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/MusicVideo
+:MusicVideo rdf:type owl:Class ;
+            rdfs:subClassOf :Video ;
+            rdfs:comment "Represents videos containing music content"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Playlist
+:Playlist rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Registered_User
+:Registered_User rdf:type owl:Class ;
+                 rdfs:subClassOf :User .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Shorts
+:Shorts rdf:type owl:Class ;
+        rdfs:subClassOf :Video ;
+        rdfs:comment "Represents Youtube Short Videos"@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Subscribe
+:Subscribe rdf:type owl:Class ;
+           rdfs:subClassOf :Activity ;
+           rdfs:comment "Represents the action of subscribing to a channel."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Upload
+:Upload rdf:type owl:Class ;
+        rdfs:subClassOf :Activity ;
+        rdfs:comment "Represents the action of uploading a video."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/User
+:User rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Video
+:Video rdf:type owl:Class ;
+       rdfs:comment "Represents a video uploaded to the YouTube platform."@en .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Vlog
+:Vlog rdf:type owl:Class ;
+      rdfs:subClassOf :Video ;
+      rdfs:comment "Represents personal or diary-like videos."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Anjola
+:Anjola rdf:type owl:NamedIndividual ,
+                 :Registered_User ;
+        owl:sameAs :Francis ;
+        :userID "H0270989" .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Francis
+:Francis owl:sameAs :Naveen .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Naveen
+:Naveen owl:sameAs :Rockson .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Rockson
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Educational_Videos
+:Educational_Videos rdf:type owl:NamedIndividual ,
+                             :Education ;
+                    owl:differentFrom :Entertainment_Videos .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Entertainment_Videos
+:Entertainment_Videos rdf:type owl:NamedIndividual ,
+                               :Entertainment .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Francis
+:Francis rdf:type owl:NamedIndividual ,
+                  :Registered_User ;
+         :userID "YT9879R9" .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/FunnyVideo
+:FunnyVideo rdf:type owl:NamedIndividual ,
+                     :MusicVideo ;
+            owl:sameAs :TravellingVideo ;
+            :categorized_under :Entertainment_Videos ;
+            :comments_on :Anjola ;
+            :likes :Francis ,
+                   :Rockson ;
+            :uploads :Naveen ;
+            :likeCount 2 ;
+            :timestamp "2024-04-12T10:30:00"^^xsd:dateTime ;
+            :videoID "H79797" ;
+            :viewCount 4 .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/TravellingVideo
+:TravellingVideo owl:sameAs :WeekendPartyVideo .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/WeekendPartyVideo
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/KKR_Tutorial
+:KKR_Tutorial rdf:type owl:NamedIndividual ,
+                       :MusicVideo ;
+              :categorized_under :Educational_Videos ;
+              :likes :Francis ,
+                     :Naveen ;
+              :shares :Naveen ;
+              :uploads :Anjola ;
+              :likeCount 2 ;
+              :timestamp "2021-04-12T11:30:00"^^xsd:dateTime ;
+              :videoID "SE32543654" .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Learn_With_Anjo
+:Learn_With_Anjo rdf:type owl:NamedIndividual ,
+                          :Channel ;
+                 :creates :Anjola ;
+                 :subscribes :Francis ,
+                             :Naveen ;
+                 :channelID "U76574YU56" ;
+                 :subscriberCount 2 .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Naveen
+:Naveen rdf:type owl:NamedIndividual ,
+                 :Registered_User ;
+        :userID "GY08202JUF" .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/Rockson
+:Rockson rdf:type owl:NamedIndividual ,
+                  :Registered_User ;
+         :userID "U70975087" .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/TravellingVideo
+:TravellingVideo rdf:type owl:NamedIndividual ,
+                          :Shorts ;
+                 :categorized_under :Entertainment_Videos ;
+                 :comments_on :Anjola ,
+                              :Rockson ;
+                 :likes :Naveen ;
+                 :uploads :Francis ;
+                 :likeCount 1 ;
+                 :timestamp "2024-04-12T10:30:00"^^xsd:dateTime ;
+                 :videoID "T2453656" ;
+                 :viewCount 4 .
+
+
+###  http://www.semanticweb.org/knave/ontologies/2024/3/Youtube_Ontology/WeekendPartyVideo
+:WeekendPartyVideo rdf:type owl:NamedIndividual ,
+                            :Vlog ;
+                   :categorized_under :Entertainment_Videos ;
+                   :comments_on :Anjola ,
+                                :Francis ;
+                   :likes :Naveen ;
+                   :uploads :Rockson ;
+                   :likeCount 1 ;
+                   :timestamp "2022-09-22T13:30:00"^^xsd:dateTime ;
+                   :videoID "G4354Q343" ;
+                   :viewCount 4 .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
